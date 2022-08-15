@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Its Magic</title>
+    <style>
+        
+        #pg1{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          width:300px;
+          border-radius:4px;
+          background:#ffffff;
+          box-shadow:0px 8px 20px rgba(0,0,0,0.4);  
+          padding:24px 8px 24px 8px;
+          
+        }
+        #pg2{
+          display:none;
+          height:400px;
+          width:300px;
+          border-radius:50px;
+          background:#ffffff;
+          box-shadow:0px 8px 20px rgba(0,0,0,0.4);
+          display:none;  
+          padding:12px;
+          outline:solid 4px orange;
+        }
+        .shbut{
+            height:60px;
+            width:220px;
+            padding:8px;
+            border-radius:4px;
+            outline:solid 2px dodgerblue;
+            background:dodgerblue;
+            color:white;
+            font-size:20px;
+            font-weight:bold;
+            margin-top:12px;
+            border:none;
+        }
+        #pg1 input{
+            height:50px;
+            width:200px;
+            border-radius:4px;
+            padding:8px;
+            
+          
+        }
+        #box{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        
+    </style>
+</head>
+<body>
+ <div id="box">
+ <div id="pg1">
+     <div>
+         <h2>How much land you own on different planet's?</h2>
+         <p>See your property on solar system planets</p>
+        <ol>
+             <li>Moon</li>
+             <li>Neptune</li>
+             <li>Mars</li>
+             <li>Uranus</li>
+             <li>Jupiter</li>
+         </ol>
+         <div>
+         <input type="text" id="name" placeholder="Enter Your Name" onchange="next()">
+         <button onclick="next()" id="buty" class="shbut">Next</button>
+         <p>Made by <a href="https://www.linkedin.com/in/balaji-murumbe-815126207" target="_blank">balaji Murumbe</a></p>
+         </div>
+     </div>
+     </div>
+     <div id="pg2">
+         <h2><span id="nms"></span>Your Land Report is Ready...</h2>
+         <p>You will see your land Report on WhatsApp status, click on the following button 🔘</p>
+         <div>
+             <a id="shlink" class="shbut">Share on WhatsApp </a>
+             <p><a href="https://www.linkedin.com/in/balaji-murumbe-815126207" target="_blank" id="attribte"></a></p>
+          </div>
+     </div>
+     </div>
+ <script>
+     var name;
+     var hlink="";
+     function next(){
+          name = document.getElementById("name").value;
+          var addname = document.getElementById("nms");
+          
+          addname.innerHTML=name;
+         var pg1 = document.getElementById("pg1");
+         var pg2 = document.getElementById("pg2");
+         var attrib = document.getElementById("attribte");
+         attrib.innerHTML="Made by Balaji Murumbe";
+         if(name!=""){
+         pg1.style.display="none";
+         pg2.style.display="block";
+         }
+         else{
+             alert("Enter Name !");
+         }
+         reslt();
+     }
+     function randacr(){
+     var pnums = [87,97,98,99,90,93,45,78,0,3,100,99,100,40,89,80,96,94,85,88,71,78,79,69,94,84,81,65,50,60,70,83,32,56,58,72,66,43,12,16,32,42,48,100,98];
+         pacr = Math.floor(Math.random()*pnums.length)+0;
+         return pnums[pacr];
+     }
+     
+     function reslt(){
+          
+        var p1 ="🚀Moon:-"+randacr()+" acre";
+        var p2 ="🚀Mars:-"+randacr()+" acre";
+        var p3 ="🚀pluto:-"+randacr()+" acre";
+        var p4 ="🚀saturn:-"+randacr()+" acre";
+        var p5 ="🚀uranus:-"+randacr()+" acre";
+        var p6 ="🚀jupiter:-"+randacr()+" acre";
+        var p7 ="🚀venus:-"+randacr()+" acre";
+        var p8 ="🚀Mercury:-"+randacr()+" acre";
+       
+       var shlink=document.getElementById("shlink"); 
+shlink.setAttribute("data-action","share/whatsapp/share");
+var shareres=`whatsapp://send?text= *${name} owns land on following planets:                                                   [${p1}],[${p2}],[${p3}], 
+[${p4}],[${p5}],[${p6}],[${p7}],
+[${p8}] (land in acres)* see your here: [${hlink}],`;
+console.log(`${p1}`);
+shlink.setAttribute("href",shareres); 
+     }
+   
+ </script>
+</body>
+</html>
